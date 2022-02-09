@@ -1,13 +1,10 @@
 import { getPets, postNewPet, putMethod, deletePet} from './pet.js';
+import { postStore,getStore, deleteStore } from "./store.js";
 getPets();
 postNewPet();
 putMethod();
 deletePet();
-
-import { postStore } from "./store.js";
 postStore();
-import { getStore } from "./store.js";
 getStore();
-import { deleteStore } from './store.js';
 deleteStore();
 

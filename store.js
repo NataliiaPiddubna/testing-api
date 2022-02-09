@@ -1,5 +1,7 @@
 //1. Post for store.js
 import request from 'supertest';
+const TYPE = 'Content-Type';
+const JSON = /json/;
 
 export const postStore = async()=> {
   return await request('https://petstore.swagger.io/v2') //base URL
@@ -13,7 +15,7 @@ export const postStore = async()=> {
     "complete": true
   })
   .set('Accept', 'application/json')//headers
-  .expect('Content-Type', /json/)
+  .expect(TYPE, JSON)
   .expect(200)//status code
   .then(response => {
     console.log(response.body)
@@ -25,7 +27,7 @@ export const getStore = async()=> {
     return await request('https://petstore.swagger.io/v2') //base URL
     .get('/store/order/7')//method
     .set('Accept', 'application/json')//headers
-    .expect('Content-Type', /json/)
+    .expect(TYPE, JSON)
     .expect(200)//status code
     .then(response => {
       console.log(response.body)
@@ -38,7 +40,7 @@ export const deleteStore = async()=> {
     return await request('https://petstore.swagger.io/v2') //base URL
     .delete('/store/order/7')//method
     .set('Accept', 'application/json')//headers
-    .expect('Content-Type', /json/)
+    .expect(TYPE, JSON)
     .expect(200)//status code
     .then(response => {
       console.log(response.body)

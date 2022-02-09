@@ -1,11 +1,13 @@
 // 1.Get method for pet.js  
 import request from 'supertest';
+const TYPE = 'Content-Type';
+const JSON = /json/;
 
 export const getPets = async()=> {
   return await request('https://petstore.swagger.io/v2') //base URL
   .get('/pet/findByStatus?status=available')//method
   .set('Accept', 'application/json')//headers
-  .expect('Content-Type', /json/)
+  .expect(TYPE, JSON)
   .expect(200)//status code
   .then(response => {
     console.log(response.body)
@@ -36,7 +38,7 @@ return await request('https://petstore.swagger.io/v2') //base URL
     "status": "sold"
   })
   .set('Accept', 'application/json')//headers
-  .expect('Content-Type', /json/)
+  .expect(TYPE, JSON)
   .expect(200)//status code
   .then(response => {
     console.log(response.body)
@@ -66,7 +68,7 @@ export const putMethod = async()=> {
     "status": "available"
   })
   .set('Accept', 'application/json')//headers
-  .expect('Content-Type', /json/)
+  .expect(TYPE, JSON)
   .expect(200)//status code
   .then(response => {
     console.log(response.body)
@@ -79,7 +81,7 @@ export const deletePet = async()=> {
   return await request('https://petstore.swagger.io/v2') //base URL
   .delete('/pet/9223372016854924000')//method
   .set('Accept', 'application/json')//headers
-  .expect('Content-Type', /json/)
+  .expect(TYPE, JSON)
   .expect(200)//status code
   .then(response => {
     console.log(response.body)
